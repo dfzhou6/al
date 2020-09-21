@@ -24,6 +24,21 @@ def print_lk(lk):
         print(tmp.value)
         tmp = tmp.next
 
+def create_close_lk():
+    lk = Node("start")
+    tmp = lk
+    
+    for i in range(10):
+        node = Node(i)
+        tmp.next = node
+        tmp = node
+        if i == 5:
+            c_node = node
+    
+    tmp.next = c_node
+    
+    return lk
+
 def run(lk, n):
     head = lk.next
     cur = lk
