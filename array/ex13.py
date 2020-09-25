@@ -6,36 +6,20 @@
 
 def run(arr):
     dp = {}
-
+    res = 0
     for i, v in enumerate(arr):
-        if i == 0:
-            dp[i] = [v]
-            max_v = 1
-            continue
-
+        dp[i] = 1
         j = 0
-        for vv in dp[i - 1]:
-            if v > vv:
-                j += 1
-            else:
-                break
-        if j + 1 == len(dp[i - 1]) and vv > v:
-            dp[i] = dp[i - 1][:-1]
-            dp[i].append(v)
-        elif j + 1 > len(dp[i - 1]):
-            dp[i] = dp[i - 1][:]
-            dp[i].append(v)
-        else:
-            dp[i] = dp[i - 1]
-        
-        if len(dp[i]) > max_v:
-            max_v = len(dp[i])
-
-        print(dp[i])
+        while j < i:
+            if arr[j] < v:
+                dp[i] = max(dp[j] + 1, dp[i])
+            j += 1
+        res = max(dp[i], res)
     
-    return max_v
+    return res
 
 print(run([10, 9, 2, 5, 3, 7, 101, 18]))
+print(run(range(0, 10)))
         
             
                 
