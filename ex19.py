@@ -9,7 +9,7 @@ def run(root):
         return 0
     
     l_deep = run(root.left)
-    r_deep = run(root,right)
+    r_deep = run(root.right)
 
     return max(l_deep, r_deep) + 1
 
